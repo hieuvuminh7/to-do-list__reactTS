@@ -1,0 +1,29 @@
+.title {
+    font-size: 32px;
+    color: purple;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    .formInput {
+        flex-grow: 1;
+        outline: none;
+        padding: 5px;
+        border: none;
+        border-bottom: 2px solid purple;
+        margin-right: 8px;
+    }
+    .btn {
+        background-color: none;
+        width: 5px;
+        height: 4px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
