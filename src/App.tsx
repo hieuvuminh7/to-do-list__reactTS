@@ -1,11 +1,9 @@
-import { TodoList } from "./components/TodoList/TodoList"
+import Todolist from "./components/Todolist/Todolist"
 
 const App = () => {
-  return (
-    <div>
-      <TodoList />
-    </div>
-  )
+  return <>
+    <Todolist/>
+  </>
 }
 
 export default App

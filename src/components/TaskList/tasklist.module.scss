@@ -1,40 +1,48 @@
 .title {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.taskItemDone {
-    text-decoration: line-through;
-}
-
-.taskList {
-  margin-top: 20px;
-}
-
-.left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    font-size: 23px;
+    margin-top: 20px;
 }
 
 .taskItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 40px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.btnActions {
-  display: flex;
-  gap: 4px;
+.taskItemLeft {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.taskItemLeft span {
+    font-size: 16px;
+    color: grey;
+    flex: 1;
+}
+
+.taskNameDone {
+    text-decoration: line-through;
+    color: #ccc;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
 }
 
 .btn {
-  border-radius: 5px;
-  border: none;
-  padding: 3px;
-  &:hover {
-    border: 1px solid grey;
-    opacity: 0.9;
-  }
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: rgba(128, 128, 128, 0.405);
+}
+
+.btn:nth-child(2) {
+    background-color: rgba(255, 0, 0, 0.548);
+}
+
+.btn:hover {
+    opacity: 0.5;
 }

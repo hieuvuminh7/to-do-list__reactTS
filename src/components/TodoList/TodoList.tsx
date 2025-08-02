@@ -1,31 +1,49 @@
 import { useState } from "react";
-import { TaskInput } from "../TaskInput/TaskInput";
 import { TaskList } from "../TaskList/TaskList";
-import styles from "./todolist.module.scss";
-import { ITodos } from "../../@Types/todos";
+import { TodoInput } from "../TodoInput/TodoInput";
+import styles from './todolist.module.scss';
+import { ITodo } from "../../@Types/todo";
 
-export const TodoList = () => {
-  const [todos, setTodos] = useState<ITodos[]>([]);
+const Todolist = () => {
+  const fakeData = [
+    {id: '123abc', name: 'Quét nhà', done: false},
+    {id: '1e3abc', name: 'Nấu Cơm', done: true}
+  ]
+  const [todos, setTodos] = useState<ITodo[]>(fakeData);
 
-  const taskDone = todos.filter(item => item.done);
-  const taskNotDone = todos.filter(item => !item.done);
+  const doneList = todos.filter(item => item.done);
+  const notDoneList = todos.filter(item => !item.done);
 
-  function addTodo (name: string) {
-    const newTodo: ITodos = {
+  const handleAddTodo = (name: string) => {
+    const newTodos:ITodo = {
       name,
       done: false,
-      id: new Date().toISOString() 
+      id: new Date().toISOString()
     }
-    setTodos((prev) => [...prev, newTodo]);
+    setTodos(prev => [...prev, newTodos])
   }
 
+  // Done 
+  const handleDoneTodo = (id: string, done: boolean) => {
+    setTodos((prev) => {
+      return prev.map((item) => {
+        if(item.id === id) return {...item, done}
+        return item
+      })
+    })
+  }
+  
   return (
-    <div className={styles.todoList}>
-      <div className={styles.todoListContainer}>
-        <TaskInput addTodo={addTodo} />
-        <TaskList done={false} todos={taskNotDone} />
-        <TaskList done={true} todos={taskDone} />
+    <>
+      <div className={styles.todoList}>
+        <div className={styles.todoListContainer}>
+          <TodoInput handleAddTodo={handleAddTodo}/>
+          <TaskList done={false} taskList={notDoneList} handleDoneTodo={handleDoneTodo}/>
+          <TaskList done taskList={doneList} handleDoneTodo={handleDoneTodo}/>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
+
+export default Todolist;

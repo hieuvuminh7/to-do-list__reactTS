@@ -1,0 +1,34 @@
+.formContainer {
+    margin-top: 20px;
+}
+
+.formGroup {
+    display: flex;
+    align-items: center;
+}
+
+.formInput, .btn {
+    padding: 6px 4px;
+}
+
+.formInput {
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid purple;
+    outline: none;
+}
+
+.formInput::placeholder {
+    color: rgba(128, 0, 128, 0.562);
+}
+
+.btn {
+    border: none;
+    margin-left: 4px;
+    border-radius: 4px;
+    background-color: #ccc;
+}
+
+.btn:hover {
+    opacity: 0.5;
+}
