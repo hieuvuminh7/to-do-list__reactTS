@@ -4,11 +4,13 @@ import styles from "./tasklist.module.scss";
 interface TaskList {
   done: boolean;
   taskList: ITodo[];
-  handleDoneTodo: (id: string, done: boolean) => void;
+  handleDoneTodo: (id: string) => void;
+  startEdit: (id: string) => void;
+  deleteTodo: (id: string) => void
 }
 
 export const TaskList = (props: TaskList) => {
-  const { done, taskList, handleDoneTodo } = props;
+  const { done, taskList, handleDoneTodo, startEdit, deleteTodo} = props;
 
   return (
     <>
@@ -27,15 +29,20 @@ export const TaskList = (props: TaskList) => {
                     id=""
                     className={styles.taskCheckbox}
                     checked={item.done}
-                    onChange={(e) => handleDoneTodo(item.id, e.target.checked)}
+                    onChange={() => handleDoneTodo(item.id)}
                   />
                   <span className={item.done ? `${styles.taskNameDone}` : ""}>
                     {item.name}
                   </span>
                 </div>
                 <div className={styles.actions}>
-                  <button className={styles.btn}>🖊️</button>
-                  <button className={styles.btn}>🗑️</button>
+                  <button
+                    className={styles.btn}
+                    onClick={() => startEdit(item.id)}
+                  >
+                    🖊️
+                  </button>
+                  <button className={styles.btn} onClick={() => deleteTodo(item.id)}>🗑️</button>
                 </div>
               </div>
             </div>
